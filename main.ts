@@ -28,7 +28,7 @@ basic.forever( () => {
         altitude = weatherbit.altitude()
         windSpeed = weatherbit.windSpeed()
         windDirection = weatherbit.windDirection()
-        json = '{"temperature":' + temperature + ',"humidity":' + humidity + ',"pressure":' + pressure + ',"altitude":' + altitude + ',"windSpeed":' + windSpeed + ',"windDirection":' + windDirection + '}'
+        json = '{"temperature":' + temperature + ',"humidity":' + humidity + ',"pressure":' + pressure + ',"altitude":' + altitude + ',"windSpeed":' + windSpeed + ',"windDirection":"' + windDirection + '"}'
         serial.writeLine(json)
         led.setBrightness(10)
         basic.showLeds(`
