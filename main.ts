@@ -15,7 +15,8 @@ let altitude = 0
 let pressure = 0
 let humidity = 0
 let temperature = 0
-let signal = ""
+let latitude = 19.5477783
+let longitude = -96.9435822
 let json = ""
 weatherbit.startWeatherMonitoring()
 
@@ -28,7 +29,15 @@ basic.forever( () => {
         altitude = weatherbit.altitude()
         windSpeed = weatherbit.windSpeed()
         windDirection = weatherbit.windDirection()
-        json = '{"temperature":' + temperature + ',"humidity":' + humidity + ',"pressure":' + pressure + ',"altitude":' + altitude + ',"windSpeed":' + windSpeed + ',"windDirection":"' + windDirection + '"}'
+        json = '{"temperature":' + temperature + 
+        ',"humidity":' + humidity + 
+        ',"pressure":' + pressure + 
+        ',"altitude":' + altitude + 
+        ',"windSpeed":' + windSpeed + 
+        ',"windDirection":"' + windDirection + 
+        ',"latitude":' + latitude +
+        ',"longitude":' + longitude +
+        '"}'
         serial.writeLine(json)
         led.setBrightness(10)
         basic.showLeds(`
