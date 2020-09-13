@@ -35,9 +35,9 @@ basic.forever( () => {
         ',"altitude":' + altitude + 
         ',"windSpeed":' + windSpeed + 
         ',"windDirection":"' + windDirection + 
-        ',"latitude":' + latitude +
+        '","latitude":' + latitude +
         ',"longitude":' + longitude +
-        '"}'
+        '}'
         serial.writeLine(json)
         led.setBrightness(10)
         basic.showLeds(`
