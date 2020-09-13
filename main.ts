@@ -55,5 +55,5 @@ basic.forever(function () {
         # # # # #
         `)
     basic.clearScreen()
-    basic.pause(1000)
 })
+
