@@ -1,14 +1,3 @@
-/**
- * serial.redirect(
- * 
- * SerialPin.P15,
- * 
- * SerialPin.P14,
- * 
- * BaudRate.BaudRate9600
- * 
- * )
- */
 let windDirection = ""
 let windSpeed = 0
 let altitude = 0
@@ -18,11 +7,12 @@ let temperature = 0
 let latitude = 19.5477783
 let longitude = -96.9435822
 let json = ""
+//serial.redirect(SerialPin.P15, SerialPin.P14, 115200)
+serial.redirectToUSB()
 weatherbit.startWeatherMonitoring()
 
 basic.forever( () => {
-    //signal = serial.readLine()
-    serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () {
+    //serial.onDataReceived(serial.delimiters(Delimiters.NewLine), function () { this line wait s for a signal to trigger function
         temperature = weatherbit.temperature() / 100
         humidity = weatherbit.humidity() / 1024
         pressure = weatherbit.pressure() / 25600
@@ -40,30 +30,9 @@ basic.forever( () => {
         '}'
         serial.writeLine(json)
         led.setBrightness(10)
-        basic.showLeds(`
-            . . . . .
-            . . . . .
-            . . # . .
-            . . . . .
-            . . . . .
-            `)
-        basic.showLeds(`
-            . . . . .
-            . # # # .
-            . # . # .
-            . # # # .
-            . . . . .
-            `)
-        basic.showLeds(`
-            # # # # #
-            # . . . #
-            # . . . #
-            # . . . #
-            # # # # #
-            `)
+        basic.showString("CCTA")
         basic.clearScreen()
-    })
-    
-    //basic.pause(2000)
+        pause(10670)
+    //})
 })
 
